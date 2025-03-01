@@ -9,12 +9,15 @@ class Base(models.Model):
 
 class Category(Base):
     name = models.CharField(max_length=255,unique=True)
+    def __str__(self):
+        return self.name
+    
 
 class Vehicle(Base):
     mileage = models.FloatField()
     year = models.IntegerField()
     name = models.CharField(max_length=255)
-    main_photo = models.ImageField()
+    main_photo = models.ImageField(upload_to='main-photos/')
     color = models.CharField(max_length=100)
     fuel_type = models.CharField(max_length=100)
     category = models.ForeignKey(Category, related_name='categories', on_delete=models.SET_NULL, blank=True, null=True)
