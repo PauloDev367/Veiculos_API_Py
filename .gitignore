@@ -1,2 +1,4 @@
 /.venv
 /.python-versions
+__pycache__/
+/veiculos/db.sqlite3
