@@ -30,7 +30,6 @@ class PhotosSerializer(serializers.ModelSerializer):
             'vehicle',
         )
 
-
 class VehicleVariationSerializer(serializers.ModelSerializer):
     class Meta:
         model = VehicleVariation

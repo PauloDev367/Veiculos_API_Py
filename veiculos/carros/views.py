@@ -27,3 +27,13 @@ class VehiclePhotosApiView(generics.ListAPIView):
 class VehicleVariationViewSet(viewsets.ModelViewSet):
     queryset = VehicleVariation.objects.all()
     serializer_class = VehicleVariationSerializer
+
+
+class VehicleVehicleVariationsApiView(generics.ListAPIView):
+    serializer_class = VehicleVariationSerializer
+    
+    def get_queryset(self):
+        if self.kwargs['vehicle_pk']:
+            vehicle_pk = self.kwargs['vehicle_pk']
+            return VehicleVariation.objects.filter(vehicle_id=vehicle_pk)
+        return self.queryset.all()

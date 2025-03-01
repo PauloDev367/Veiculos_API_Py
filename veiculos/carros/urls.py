@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import CategoryViewSet, VehicleViewSet, PhotoViewSet, VehiclePhotosApiView, VehicleVariationViewSet
+from .views import CategoryViewSet, VehicleViewSet, PhotoViewSet, VehiclePhotosApiView, VehicleVariationViewSet, VehicleVehicleVariationsApiView
 from rest_framework.routers import SimpleRouter
 
 router = SimpleRouter()
@@ -9,5 +9,6 @@ router.register('photos', PhotoViewSet)
 router.register('vehicle-variations', VehicleVariationViewSet)
 
 urlpatterns = [
-    path('vehicles/<int:vehicle_pk>/photos/', VehiclePhotosApiView.as_view(), name='cursos_photos')
+    path('vehicles/<int:vehicle_pk>/photos/', VehiclePhotosApiView.as_view(), name='vehicle_photos'),
+    path('vehicles/<int:vehicle_pk>/variations/', VehicleVehicleVariationsApiView.as_view(), name='vehicle_variations'),
 ]
