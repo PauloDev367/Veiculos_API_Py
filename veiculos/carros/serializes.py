@@ -29,3 +29,15 @@ class PhotosSerializer(serializers.ModelSerializer):
             'path',
             'vehicle',
         )
+
+
+class VehicleVariationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = VehicleVariation
+        fields = (
+            'id',
+            'name',
+            'main_photo',
+            'color',
+            'vehicle',
+        )
