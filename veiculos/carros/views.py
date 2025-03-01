@@ -1,7 +1,8 @@
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated
-from rest_framework import viewsets, generics
-from .serializes import CategorySerializer, VehicleSerializer, PhotosSerializer, VehicleVariationSerializer, LoginSerializer
+from rest_framework import viewsets, generics, status
+from rest_framework.response import Response
+from .serializes import CategorySerializer, VehicleSerializer, PhotosSerializer, VehicleVariationSerializer, LoginSerializer, UserRegisterSerializer
 from .models import Category, Vehicle, Photo, VehicleVariation
 from .services.authentication import Authenticator
 
@@ -51,3 +52,13 @@ class LoginView(APIView):
         serializer = LoginSerializer(data=request.data)
         auth = Authenticator()
         return auth.authenticate(serializer)
+    
+class RegisterView(APIView):
+    def post(self, request):
+        serializer = UserRegisterSerializer(data=request.data)
+        
+        if serializer.is_valid():
+            serializer.save()
+            return Response({"message": "Usuário cadastrado com sucesso!"}, status=status.HTTP_201_CREATED)
+        
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
