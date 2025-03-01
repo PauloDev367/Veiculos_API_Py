@@ -22,6 +22,9 @@ class Vehicle(Base):
     fuel_type = models.CharField(max_length=100)
     category = models.ForeignKey(Category, related_name='categories', on_delete=models.SET_NULL, blank=True, null=True)
     price = models.FloatField()
+    
+    def __str__(self):
+        return self.name
 
 class Photo(Base):
     path = models.ImageField()

@@ -20,3 +20,12 @@ class VehicleSerializer(serializers.ModelSerializer):
             'category',
             'price',
         )
+
+class PhotosSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Photo
+        fields = (
+            'id',
+            'path',
+            'vehicle',
+        )
