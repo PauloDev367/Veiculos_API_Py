@@ -2,3 +2,4 @@
 /.python-versions
 __pycache__/
 /veiculos/db.sqlite3
+/veiculos/uploads
